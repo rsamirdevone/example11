@@ -44,20 +44,22 @@ class _HomePageState extends State<HomePage> {
     } else if (currentPage == DrawerSections.profile) {
       container = Profile();
     }
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green[700],
-        title: Text("Unity"),
-      ),
-      body: container,
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green[700],
+          title: Text("Unity"),
+        ),
+        body: container,
+        drawer: Drawer(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  MyHeaderDrawer(),
+                  MyDrawerList(),
+                ],
+              ),
             ),
           ),
         ),
@@ -101,7 +103,7 @@ class _HomePageState extends State<HomePage> {
               currentPage = DrawerSections.contacts;
             } else if (id == 3) {
               currentPage = DrawerSections.courses;
-            }  else if (id == 4) {
+            } else if (id == 4) {
               currentPage = DrawerSections.settings;
             } else if (id == 5) {
               currentPage = DrawerSections.profile;
@@ -137,10 +139,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-enum DrawerSections {
-  dashboard,
-  contacts,
-  courses,
-  settings,
-  profile
-}
+enum DrawerSections { dashboard, contacts, courses, settings, profile }
