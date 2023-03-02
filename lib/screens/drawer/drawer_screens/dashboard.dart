@@ -91,33 +91,66 @@ class _DashboardState extends State<Dashboard> {
                       borderRadius: BorderRadius.circular(12)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 10,
+                    child: Column(children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Sales',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
                         ),
-                        Text(
-                          'Sales',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w500,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 150,
+                            width: 150,
+                            child: DChartPie(
+                              data: [
+                                {'domain': 'Flutter', 'measure': 20},
+                                {'domain': 'Frontend', 'measure': 27},
+                                {'domain': 'Ionic', 'measure': 20},
+                                {'domain': 'Cordova', 'measure': 20},
+                              ],
+                              fillColor: (pieData, index) {
+                                switch (pieData['domain']) {
+                                  case 'Flutter':
+                                    return Colors.blue[300];
+                                  case 'Frontend':
+                                    return Colors.yellow[700];
+                                  default:
+                                    return Colors.red;
+                                }
+                              },
+                            ),
                           ),
+                        ],
+                      ),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        child: DChartPie(
+                          data: [
+                            {'domain': 'Flutter', 'measure': 20},
+                            {'domain': 'Frontend', 'measure': 27},
+                            {'domain': 'Ionic', 'measure': 20},
+                            {'domain': 'Cordova', 'measure': 20},
+                          ],
+                          fillColor: (pieData, index) {
+                            switch (pieData['domain']) {
+                              case 'Flutter':
+                                return Colors.blue[300];
+                              case 'Frontend':
+                                return Colors.yellow[700];
+                              default:
+                                return Colors.red;
+                            }
+                          },
                         ),
-                        Container(
-                          height: 200,
-                          width: 200,
-                          child: DChartPie(
-                            data: [
-                              {'domain': 'Flutter', 'measure': 28},
-                              {'domain': 'React Native', 'measure': 27},
-                              {'domain': 'Ionic', 'measure': 20},
-                              {'domain': 'Cordova', 'measure': 15},
-                            ],
-                            fillColor: (pieData, index) => Colors.purple,
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ]),
                   ),
                 ),
               ],
