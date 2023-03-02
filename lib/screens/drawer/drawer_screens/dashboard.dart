@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:d_chart/d_chart.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -90,12 +91,32 @@ class _DashboardState extends State<Dashboard> {
                       borderRadius: BorderRadius.circular(12)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Sales',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Sales',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          width: 200,
+                          child: DChartPie(
+                            data: [
+                              {'domain': 'Flutter', 'measure': 28},
+                              {'domain': 'React Native', 'measure': 27},
+                              {'domain': 'Ionic', 'measure': 20},
+                              {'domain': 'Cordova', 'measure': 15},
+                            ],
+                            fillColor: (pieData, index) => Colors.purple,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
