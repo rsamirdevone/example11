@@ -102,52 +102,81 @@ class _DashboardState extends State<Dashboard> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            height: 150,
-                            width: 150,
-                            child: DChartPie(
-                              data: [
-                                {'domain': 'Flutter', 'measure': 20},
-                                {'domain': 'Frontend', 'measure': 27},
-                                {'domain': 'Ionic', 'measure': 20},
-                                {'domain': 'Cordova', 'measure': 20},
-                              ],
-                              fillColor: (pieData, index) {
-                                switch (pieData['domain']) {
-                                  case 'Flutter':
-                                    return Colors.blue[300];
-                                  case 'Frontend':
-                                    return Colors.yellow[700];
-                                  default:
-                                    return Colors.red;
-                                }
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
                       Container(
-                        width: 100,
-                        height: 100,
-                        child: DChartPie(
-                          data: [
-                            {'domain': 'Flutter', 'measure': 20},
-                            {'domain': 'Frontend', 'measure': 27},
-                            {'domain': 'Ionic', 'measure': 20},
-                            {'domain': 'Cordova', 'measure': 20},
-                          ],
-                          fillColor: (pieData, index) {
-                            switch (pieData['domain']) {
-                              case 'Flutter':
-                                return Colors.blue[300];
-                              case 'Frontend':
-                                return Colors.yellow[700];
-                              default:
-                                return Colors.red;
-                            }
-                          },
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            top: 20,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 170,
+                                height: 170,
+                                child: Container(
+                                  height: 150,
+                                  width: 150,
+                                  child: DChartPie(
+                                    data: [
+                                      {'domain': 'Flutter', 'measure': 50},
+                                      {'domain': 'Frontend', 'measure': 50},
+                                    ],
+                                    fillColor: (pieData, index) {
+                                      switch (pieData['domain']) {
+                                        case 'Flutter':
+                                          return Colors.blue[300];
+                                        case 'Frontend':
+                                          return Colors.yellow[700];
+                                        case 'Backend':
+                                          return Colors.blue[800];
+                                        default:
+                                          return Colors.red;
+                                      }
+                                    },
+                                    showLabelLine: false,
+                                    pieLabel: (pieData, index) {
+                                      return "${pieData['domain']}";
+                                    },
+                                    labelPosition: PieLabelPosition.inside,
+                                    labelPadding: 0,
+                                    labelColor: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                child: Container(
+                                  height: 170,
+                                  width: 170,
+                                  child: DChartPie(
+                                    data: [
+                                      {'domain': 'Flutter', 'measure': 50},
+                                      {'domain': 'Scratch', 'measure': 50},
+                                      {'domain': 'Backend', 'measure': 50},
+                                    ],
+                                    fillColor: (pieData, index) {
+                                      switch (pieData['domain']) {
+                                        case 'Flutter':
+                                          return Colors.blue[300];
+                                        case 'Scratch':
+                                          return Colors.green[600];
+                                        case 'Backend':
+                                          return Colors.yellow[800];
+                                        default:
+                                          return Colors.red;
+                                      }
+                                    },
+                                    showLabelLine: false,
+                                    pieLabel: (pieData, index) {
+                                      return "${pieData['domain']}";
+                                    },
+                                    labelPosition: PieLabelPosition.inside,
+                                    labelPadding: 0,
+                                    labelColor: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ]),
